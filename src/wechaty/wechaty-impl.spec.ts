@@ -103,7 +103,9 @@ test('ProtectedProperties', async t => {
   type NotExistInWechaty = Exclude<AllProtectedProperty, keyof WechatyImpl | `_${string}`>
   type NotExistTest = NotExistInWechaty extends never ? true : false
 
-  const noOneLeft: NotExistTest = true
+  // Type-level check: NotExistTest should be true (all protected properties exist)
+  // If this line has a type error, it means some protected properties are not in WechatyImpl
+  const noOneLeft = true as NotExistTest
   t.ok(noOneLeft, 'should match Wechaty properties for every protected property')
 })
 

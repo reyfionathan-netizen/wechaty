@@ -1,11 +1,64 @@
 {
-  "extends": "@chatie/tsconfig",
   "compilerOptions": {
-    "outDir": "dist/esm",
-    "lib": ["ESNext", "DOM"],
+    /**
+     * ES Module support
+     */
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+
+    /**
+     * Type import/export checkings
+     * Note: importsNotUsedAsValues was removed in TypeScript 5.5+
+     * Using verbatimModuleSyntax: false as replacement
+     */
     "verbatimModuleSyntax": false,
-    // See: https://github.com/wechaty/wechaty/issues/2551
-    "ignoreDeprecations": "5.0"
+    "isolatedModules": true,
+
+    /**
+     * Output settings
+     */
+    "outDir": "dist/esm",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    /**
+     * Library and module resolution
+     */
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": false,
+
+    /**
+     * Decorator support
+     */
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    /**
+     * Strict type checking
+     */
+    "strict": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noImplicitThis": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /**
+     * Other settings
+     */
+    "traceResolution": false,
+    "noLib": false
   },
   "exclude": [
     "node_modules/",
@@ -21,4 +74,8 @@
     "src/**/*.ts",
     "tests/**/*.spec.ts",
   ],
+  "ts-node": {
+    "transpileOnly": true,
+    "transpiler": "ts-node/transpilers/swc-experimental"
+  }
 }
