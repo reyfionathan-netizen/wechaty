@@ -29,7 +29,7 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "resolveJsonModule": false,
+    "resolveJsonModule": true,
 
     /**
      * Decorator support
